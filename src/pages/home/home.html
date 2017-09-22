@@ -1,28 +1,52 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      text_app.io
+      newton.io
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-        <ion-card *ngFor="let object of objects">
-            <ion-card-header>
-                {{ object.name }}
-            </ion-card-header>
-        <ion-card-content>
-            {{ object.text }}
-        </ion-card-content>
-        </ion-card>
-  
-
+<ion-list>
   <ion-item>
-  <!--<ion-label fixed>Username</ion-label>-->
-    <ion-input type="text" value="" [(ngModel)]="input"></ion-input>
-    <button ion-button item-right>
-      <ion-icon name="finger-print" (click)="parse(input)"></ion-icon>
-    </button>
+    <ion-label>Operation</ion-label>
+    <ion-select [(ngModel)]="operation">
+      <ion-option value="simplify">Simplify</ion-option>
+      <ion-option value="factor">Factor</ion-option>
+      <ion-option value="derive">Derive</ion-option>
+      <ion-option value="integrate">Integrate</ion-option>
+      <ion-option value="zeroes">Find 0s</ion-option>
+      <ion-option value="tangent">Find Tangent</ion-option>
+      <ion-option value="area">Area Under Curve</ion-option>
+      <ion-option value="cos">Cosine</ion-option>
+      <ion-option value="sin">Sine</ion-option>
+      <ion-option value="tan">Tangent</ion-option>
+      <ion-option value="arccos">Inverse Cosine</ion-option>
+      <ion-option value="arcsin">Inverse Sine</ion-option>
+      <ion-option value="arctan">Inverse Tangent</ion-option>
+      <ion-option value="abs">Absolute Value</ion-option>
+      <ion-option value="log">Logarithm</ion-option>
+    </ion-select>
   </ion-item>
+</ion-list>
+
+<ion-item>
+  <ion-label fixed>Input</ion-label>
+  <br><br>
+  <ion-input type="text" value="" [(ngModel)]="input"></ion-input>
+</ion-item>
+
+<button ion-button full (click)="operate(input)">Compute</button>
+
+<ion-card>
+    <ion-card-header>
+        Result
+    </ion-card-header>
+    <ion-card-content>
+        {{ result.result }}
+    </ion-card-content>
+</ion-card>
+
 </ion-content>
+
